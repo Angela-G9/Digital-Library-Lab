@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import BookList from "./components/BookList";
-import BookForm from "./components/BookForm";
-import SearchBar from "./components/SearchBar";
-import "./styles.css";
+import BookList from "./Components/BookList";
+import BookForm from "./Components/BookForm";
+import SearchBar from "./Components/SearchBar";
+import "./index.css";
 
 const initialBooks = [
   { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Classic" },
