@@ -1,14 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-function BookForm({ addBook }) {
+function BookForm({ addBook, editingBook, updateBook }) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
 
+  // Pre-fill form if editing a book
+  useEffect(() => {
+    if (editingBook) {
+      setTitle(editingBook.title);
+      setAuthor(editingBook.author);
+      setGenre(editingBook.genre);
+    } else {
+      setTitle("");
+      setAuthor("");
+      setGenre("");
+    }
+  }, [editingBook]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title || !author || !genre) return;
-    addBook({ title, author, genre });
+
+    const book = { title, author, genre };
+    if (editingBook) {
+      updateBook({ ...book, id: editingBook.id }); // Update existing book
+    } else {
+      addBook(book); // Add new book
+    }
+
     setTitle("");
     setAuthor("");
     setGenre("");
@@ -34,7 +54,7 @@ function BookForm({ addBook }) {
         value={genre}
         onChange={(e) => setGenre(e.target.value)}
       />
-      <button type="submit">Add Book</button>
+      <button type="submit">{editingBook ? "Update Book" : "Add Book"}</button>
     </form>
   );
 }
