@@ -1,8 +1,19 @@
-# React + Vite
+# Digital Library App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A mini web application built with React to manage a digital library of books. Users can view, add, and filter books by title or genre.
 
-Currently, two official plugins are available:
+## Features
+- **View Books**: Display a list of books with their titles, authors, and genres.
+- **Add Books**: Add new books to the library using a form.
+- **Search Books**: Filter books dynamically by typing into a search bar.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- React
+
+- HTML/CSS
+
+## How to Run the App
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Angela-G9/digital-library.git
+2. It has been deployed.
