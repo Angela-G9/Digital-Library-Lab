@@ -8,11 +8,13 @@ const initialBooks = [
   { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Classic" },
   { id: 2, title: "1984", author: "George Orwell", genre: "Dystopian" },
   { id: 3, title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Classic" },
+  { id: 4, title: "Fifty Shades of Grey", author: "E.L. James", genre: "Romance" },
 ];
 
 function App() {
   const [books, setBooks] = useState(initialBooks);
   const [searchTerm, setSearchTerm] = useState("");
+  const [editingBook, setEditingBook] = useState(null); // Track the book being edited
 
   // Add a new book
   const addBook = (newBook) => {
@@ -29,7 +31,6 @@ function App() {
     setBooks(books.map((book) => (book.id === updatedBook.id ? updatedBook : book)));
     setEditingBook(null); // Reset editing state
   };
-
 
   // Filter books based on search term
   const filteredBooks = books.filter(
@@ -49,7 +50,7 @@ function App() {
         setEditingBook={setEditingBook}
         searchTerm={searchTerm}
       />
-      </div>
+    </div>
   );
 }
 
