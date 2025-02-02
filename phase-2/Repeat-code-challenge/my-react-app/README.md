@@ -17,3 +17,23 @@ A mini web application built with React to manage a digital library of books. Us
    ```bash
    git clone https://github.com/Angela-G9/digital-library.git
 2. It has been deployed.
+---
+
+### **4. Bonus Features**
+To implement the bonus features (edit, delete, and highlight search terms), you can extend the existing code:
+
+1. **Edit Books**:
+   - Add an "Edit" button to each book.
+   - Create a form to update the book details.
+
+2. **Delete Books**:
+   - Add a "Delete" button to each book.
+   - Use the `filter` method to remove the book from the list.
+
+3. **Highlight Search Terms**:
+   - Use `replace` and regular expressions to wrap the search term in a `<span>` with a highlight class.
+
+---
+
+
+
