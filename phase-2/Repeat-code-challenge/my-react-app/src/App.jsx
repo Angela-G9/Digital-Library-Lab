@@ -19,6 +19,18 @@ function App() {
     setBooks([...books, { ...newBook, id: books.length + 1 }]);
   };
 
+  // Delete a book
+  const deleteBook = (id) => {
+    setBooks(books.filter((book) => book.id !== id));
+  };
+
+  // Update a book
+  const updateBook = (updatedBook) => {
+    setBooks(books.map((book) => (book.id === updatedBook.id ? updatedBook : book)));
+    setEditingBook(null); // Reset editing state
+  };
+
+
   // Filter books based on search term
   const filteredBooks = books.filter(
     (book) =>
@@ -30,9 +42,14 @@ function App() {
     <div className="app">
       <h1>Digital Library</h1>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <BookForm addBook={addBook} />
-      <BookList books={filteredBooks} />
-    </div>
+      <BookForm addBook={addBook} editingBook={editingBook} updateBook={updateBook} />
+      <BookList
+        books={filteredBooks}
+        deleteBook={deleteBook}
+        setEditingBook={setEditingBook}
+        searchTerm={searchTerm}
+      />
+      </div>
   );
 }
 
