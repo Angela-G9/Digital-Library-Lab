@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import BookList from "./components/BookList";
+import BookForm from "./components/BookForm";
+import SearchBar from "./components/SearchBar";
+import "./styles.css";
+
+const initialBooks = [
+  { id: 1, title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Classic" },
+  { id: 2, title: "1984", author: "George Orwell", genre: "Dystopian" },
+  { id: 3, title: "To Kill a Mockingbird", author: "Harper Lee", genre: "Classic" },
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [books, setBooks] = useState(initialBooks);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Add a new book
+  const addBook = (newBook) => {
+    setBooks([...books, { ...newBook, id: books.length + 1 }]);
+  };
+
+  // Filter books based on search term
+  const filteredBooks = books.filter(
+    (book) =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      book.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app">
+      <h1>Digital Library</h1>
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <BookForm addBook={addBook} />
+      <BookList books={filteredBooks} />
+    </div>
+  );
 }
 
-export default App
+export default App;
